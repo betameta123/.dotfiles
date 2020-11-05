@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# Makes aliases
+
+#syscmd
+alias \
+	ls='ls --color=auto' \
+	ll="ls -lha --color=auto --group-directories-first"
+
+#Git
+alias \
+	gcheck="git checkout" \
+	gc="git commit" \
+	g="git"
+	ga="git add"
+
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
