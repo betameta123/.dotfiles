@@ -1,0 +1,32 @@
+-- xmobar config used by Vic Fryzel
+-- Author: Vic Fryzel
+-- http://github.com/vicfryzel/xmonad-config
+
+-- This is setup for dual 1920x1080 monitors, with the right monitor as primary
+Config {
+--    position = TopW L 100,
+    position = Static { xpos = 0 , ypos = 0, width = 2560, height = 24 },
+--    border = BottomB,
+    borderColor = "grey",
+    font = "xft:Fira Code:size=9:antialias=true",
+    additionalFonts = ["xft:IPAGothic:size=9:antialias=true"]
+    bgColor = "#0D1E4A",
+    fgColor = "#63A6C0",
+    lowerOnStart = True,
+
+    commands = [
+        Run MultiCpu ["-t","Cpu: <total0>% ","-L","30","-H","60","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC","-w","3"] 10,
+
+        Run Memory ["-t","Mem: <usedratio>%","-H","8192","-L","4096","-h","#FFB6B0","-l","#CEFFAC","-n","#FFFFCC"] 10,
+
+        Run Date "%a %b, %_d %l:%M" "date" 10,
+
+        Run Com "/bin/bash" ["-c","~/.xmonad/scripts/spotifySong"] "spotify" 10,
+
+        Run StdinReader
+    ],
+
+    sepChar = "%",
+    alignSep = "}{",
+    template = "%StdinReader% } <fn=1>%spotify%</fn> { %multicpu% | %memory% | <fc=#CEFFAC>%date%</fc> "
+}
