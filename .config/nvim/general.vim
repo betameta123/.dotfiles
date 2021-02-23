@@ -17,17 +17,19 @@ augroup numbertoggle
 augroup END
 
 let g:go_highlight_trailing_whitespace_error=0
-map <C-l> :set number relativenumber<CR>
 let fortran_have_tabs=1
-
+setlocal spell
+set spelllang=nl,en_us
+inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "Keybinds
 inoremap jj <Esc>
 let mapleader = "\<space>"
 
-nnoremap <leader>h <C-W>h
-nnoremap <leader>j <C-W>j
-nnoremap <leader>k <C-W>k
-nnoremap <leader>l <C-W>l
+nnoremap <leader>h <C-W><C-H>
+nnoremap <leader>j <C-W><C-J>
+nnoremap <leader>k <C-W><C-K>
+nnoremap <leader>l <C-W><C-L>
 vnoremap > >gv
 vnoremap < <gv
+vnoremap <leader>cc <leader>ccgv
