@@ -1,0 +1,21 @@
+set selection-clipboard clipboard
+
+set statusbar-bg                "#17171b"
+set statusbar-fg                "#818596"
+set inputbar-bg                "#17171b"
+set inputbar-fg                "#818596"
+
+set highlight-color             "#272c42"
+set highlight-active-color      "#272c42"
+
+set recolor-darkcolor          "#c6c8d1"
+set recolor-lightcolor         "#44495e"
+
+set guioptions ""
+
+map [normal] b toggle_statusbar
+map i recolor
+map R rotate
+
+set recolor
+
