@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cat /sys/class/net/e*/operstate | grep "up" &>/dev/null && echo "" || echo ""

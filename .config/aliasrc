@@ -16,3 +16,23 @@ alias \
 
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+#nvim
+alias \
+    n="nvim"
+
+#Share Screen
+alias \
+    ss="while true; do timeout 120s mon2cam --monitor 0 -f 30 -r 1920:1080 -s; sleep .3; done"\
+    s="while true; do timeout 120s mon2cam --monitor 0 -f 30 -r 1920:1080; sleep .3; done"
+#Rust
+alias \
+    cn="cargo new" \
+    cb="cargo build" \
+    cr="cargo run"
+
+#config
+alias \
+    evc="nvim ~/.config/nvim/init.vim"
+    elc="nvim ~/texmf/tex/latex/beta/beta.sty"
+    edc="nvim ~/.local/src/dwm/config.def.h"
+    ebc="nvim ~/.local/src/dwmblocks/blocks.def.h"

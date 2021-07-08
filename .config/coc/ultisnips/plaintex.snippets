@@ -1,0 +1,108 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet itemize "itemize list" i
+\begin{itemize}
+	\item{${1}}
+\end{itemize}
+endsnippet
+
+snippet enum "list" i
+\begin{enumerate}
+	\item{${1}}
+\end{enumerate}
+endsnippet
+
+snippet theorem "theorem block" i
+\begin{Theorem}{${1}}{${2}}
+${3}
+\end{Theorem}
+endsnippet
+
+snippet def "definition block" i
+\begin{Definition}{${1}}{${2}}
+${3}
+\end{Definition}
+endsnippet
+
+snippet ex "example block" i
+\begin{Example}{${1}}{${2}}
+${3}
+\end{Example}
+endsnippet
+
+snippet tableofcontents "Table of Contents" Ai
+	\tableofcontents
+	\pagebreak
+	\addcontentsline{toc}{section}{${1}}
+	\section*{${1}}
+		${2}
+
+endsnippet
+
+snippet checklist "checklist" i
+\begin{CheckList}{${1:Task}}
+	\Task{${2:open}}{${3}}
+\end{CheckList}
+
+endsnippet
+
+#Symbols-----------------------------------------------------------------------------------------
+
+snippet // "fractions" Ai
+\frac{${1}}{${2}}
+endsnippet
+
+snippet != "not equal" A
+\ne
+endsnippet
+
+#Math-----------------------------------------------------------------------------------------
+
+snippet sum "sum" w
+\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+endsnippet
+
+snippet lim "limit" w
+\lim_{${1:n} \to ${2:\infty}} 
+endsnippet
+
+snippet integral "integral" w
+\int_{${1:0}}^{${2}} ${3} \,${4:dx}
+endsnippet
+
+#deliminaters-----------------------------------------------------------------------------------------
+snippet $ "Inline Math mode" i
+$${1}$
+endsnippet
+
+snippet \( "Inline Math" Ai
+\(${1}\)
+endsnippet
+
+snippet \[ "line Math" Ai
+\[${1}\]
+endsnippet

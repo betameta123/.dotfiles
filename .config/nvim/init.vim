@@ -6,3 +6,4 @@ source $HOME/.config/nvim/coc.vim
 source $HOME/.config/nvim/markdown-preview.vim
 source $HOME/.config/nvim/terminal.vim
 source $HOME/.config/nvim/latex.vim
+source $HOME/.config/nvim/commands.vim

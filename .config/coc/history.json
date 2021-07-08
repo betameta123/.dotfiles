@@ -1,0 +1,40 @@
+{
+  "commands": {
+    "%2Fhome%2Fkyle%2F": {
+      "config%2Fnvim": [
+        "test",
+        "c",
+        " c"
+      ],
+      "config%2Falacritty": [
+        "jjjj",
+        "jjj"
+      ]
+    },
+    "%2Fhome%2Fkyle%2FDocuments%2FCode%2FRust%2Fchat%2Fsrc": [
+      "c"
+    ],
+    "%2Fhome%2Fkyle%2FDocuments%2FCode%2FRust%2Fweather%2Fsrc": [
+      " t"
+    ]
+  },
+  "lists": {
+    "%2Fhome%2Fkyle%2F": {
+      "config%2Fnvim": [
+        "j"
+      ]
+    }
+  },
+  "extensions": {
+    "%2Fhome%2Fkyle%2F": {
+      "config%2Fnvim": [
+        "1"
+      ]
+    }
+  },
+  "symbols": {
+    "%2Fhome%2Fkyle%2FDocuments%2FCode%2Fgo%2Fsrc%2Fgithub%2Fbasics": [
+      "ZZ"
+    ]
+  }
+}

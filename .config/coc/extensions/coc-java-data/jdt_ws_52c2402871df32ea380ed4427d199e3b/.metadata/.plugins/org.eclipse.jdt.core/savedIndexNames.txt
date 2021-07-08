@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+/home/kyle/.config/coc/extensions/coc-java-data/jdt_ws_52c2402871df32ea380ed4427d199e3b/.metadata/.plugins/org.eclipse.jdt.core

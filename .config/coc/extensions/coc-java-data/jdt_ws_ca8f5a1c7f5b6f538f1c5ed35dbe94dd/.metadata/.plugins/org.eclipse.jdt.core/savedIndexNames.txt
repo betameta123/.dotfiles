@@ -1,0 +1,18 @@
+INDEX VERSION 1.131+/home/kyle/.config/coc/extensions/coc-java-data/jdt_ws_ca8f5a1c7f5b6f538f1c5ed35dbe94dd/.metadata/.plugins/org.eclipse.jdt.core
+903902555.index
+2081921606.index
+204796889.index
+4212258710.index
+766940397.index
+1965900895.index
+3036780725.index
+720643547.index
+3167560701.index
+1979301421.index
+4260572453.index
+1132201125.index
+1662822747.index
+3842426239.index
+2827761200.index
+3524476372.index
+3077272727.index

@@ -1,0 +1,519 @@
+!SESSION 2021-01-11 13:28:56.540 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_275
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/kyle/.config/coc/extensions/coc-java-data/jdt_ws_3bef534c8833ee598cd4d59a0bc62a5b
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:57.781
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:57.894
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:57.913
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:57.919
+!MESSAGE Initializing Java Language Server 0.57.0.202006172108
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:57.930
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:57.930
+!MESSAGE Non-Static Commands: [java.edit.organizeImports, java.project.refreshDiagnostics, java.project.import, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.provideSemanticTokens, java.project.getAll, java.project.isTestFile, java.project.getClasspaths, java.project.getSemanticTokensLegend, java.project.getSettings, java.project.updateSourceAttachment, java.project.resolveSourceAttachment, java.project.addToSourcePath]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:57.940
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:57.964
+!MESSAGE Creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:58.330
+!MESSAGE Finished creating the Java project jdt.ls-java-project
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:58.450
+!MESSAGE Importing Gradle project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:28:58.451
+!MESSAGE No previous Gradle project at /home/kyle/Documents/Code/battlecode21, it must be synchronized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:09.705
+!MESSAGE Workspace initialized in 11772ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:09.775
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:09.783
+!MESSAGE >> workspace/didChangeConfiguration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:09.793
+!MESSAGE >> New configuration: {java={enabled=true, jdt={ls={vmargs=-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication}}, errors={incompleteClasspath={severity=warning}}, configuration={checkProjectSettingsExclusions=true, updateBuildConfiguration=interactive, runtimes=[]}, trace={server=off}, import={gradle={enabled=true, wrapper={enabled=true}, offline={enabled=false}}, maven={enabled=true}, exclusions=[**/node_modules/**, **/.metadata/**, **/archetype-resources/**, **/META-INF/maven/**]}, maven={updateSnapshots=false, downloadSources=false}, referencesCodeLens={enabled=false}, signatureHelp={enabled=false}, implementationsCodeLens={enabled=false}, format={enabled=true, comments={enabled=true}, onType={enabled=true, fixComment={enabled=true}}}, saveActions={organizeImports=false}, project={referencedLibraries=[lib/**/*.jar], resourceFilters=[node_modules, .git]}, autobuild={enabled=true}, maxConcurrentBuilds=1.0, completion={maxResults=0.0, enabled=true, overwrite=true, guessMethodArguments=false, favoriteStaticMembers=[org.junit.Assert.*, org.junit.Assume.*, org.junit.jupiter.api.Assertions.*, org.junit.jupiter.api.Assumptions.*, org.junit.jupiter.api.DynamicContainer.*, org.junit.jupiter.api.DynamicTest.*, org.mockito.Mockito.*, org.mockito.ArgumentMatchers.*, org.mockito.Answers.*], filteredTypes=[java.awt.*, com.sun.*], importOrder=[java, javax, com, org]}, progressReports={enabled=true}, foldingRange={enabled=true}, codeGeneration={hashCodeEquals={useJava7Objects=false, useInstanceof=false}, useBlocks=false, generateComments=false, toString={template=${object.className} [${member.name()}=${member.value}, ${otherMembers}], codeStyle=STRING_CONCATENATION, skipNullValues=false, listArrayContents=true, limitElements=0.0}}, selectionRange={enabled=true}, sources={organizeImports={starThreshold=99.0, staticStarThreshold=99.0}}, templates={fileHeader=[], typeComment=[]}, references={includeAccessors=true}}}
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:09.794
+!MESSAGE >> document/didOpen
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:10.134
+!MESSAGE Reconciled 0. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:10.511
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:10.511
+!MESSAGE 15 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:10.515
+!MESSAGE Validated 1. Took 378 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:10.531
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:10.539
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:10.541
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:10.551
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:10.551
+!MESSAGE >> watchers registered
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:14.759
+!MESSAGE >> document/didClose
+!SESSION 2021-01-11 13:29:15.529 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_275
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/kyle/.config/coc/extensions/coc-java-data/jdt_ws_3bef534c8833ee598cd4d59a0bc62a5b
+
+!ENTRY org.eclipse.core.resources 2 10035 2021-01-11 13:29:15.830
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:16.733
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:16.796
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:16.812
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:16.816
+!MESSAGE Initializing Java Language Server 0.57.0.202006172108
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:16.824
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:16.824
+!MESSAGE Non-Static Commands: [java.edit.organizeImports, java.project.refreshDiagnostics, java.project.import, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.provideSemanticTokens, java.project.getAll, java.project.isTestFile, java.project.getClasspaths, java.project.getSemanticTokensLegend, java.project.getSettings, java.project.updateSourceAttachment, java.project.resolveSourceAttachment, java.project.addToSourcePath]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:16.834
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:18.003
+!MESSAGE Importing Gradle project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:18.004
+!MESSAGE battlecode21 was modified since last time the workspace was opened, must be synchronized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:18.377
+!MESSAGE Workspace initialized in 601ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:18.391
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:18.397
+!MESSAGE >> workspace/didChangeConfiguration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:18.406
+!MESSAGE >> New configuration: {java={enabled=true, jdt={ls={vmargs=-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication}}, errors={incompleteClasspath={severity=warning}}, configuration={checkProjectSettingsExclusions=true, updateBuildConfiguration=interactive, runtimes=[]}, trace={server=off}, import={gradle={enabled=true, wrapper={enabled=true}, offline={enabled=false}}, maven={enabled=true}, exclusions=[**/node_modules/**, **/.metadata/**, **/archetype-resources/**, **/META-INF/maven/**]}, maven={updateSnapshots=false, downloadSources=false}, referencesCodeLens={enabled=false}, signatureHelp={enabled=false}, implementationsCodeLens={enabled=false}, format={enabled=true, comments={enabled=true}, onType={enabled=true, fixComment={enabled=true}}}, saveActions={organizeImports=false}, project={referencedLibraries=[lib/**/*.jar], resourceFilters=[node_modules, .git]}, autobuild={enabled=true}, maxConcurrentBuilds=1.0, completion={maxResults=0.0, enabled=true, overwrite=true, guessMethodArguments=false, favoriteStaticMembers=[org.junit.Assert.*, org.junit.Assume.*, org.junit.jupiter.api.Assertions.*, org.junit.jupiter.api.Assumptions.*, org.junit.jupiter.api.DynamicContainer.*, org.junit.jupiter.api.DynamicTest.*, org.mockito.Mockito.*, org.mockito.ArgumentMatchers.*, org.mockito.Answers.*], filteredTypes=[java.awt.*, com.sun.*], importOrder=[java, javax, com, org]}, progressReports={enabled=true}, foldingRange={enabled=true}, codeGeneration={hashCodeEquals={useJava7Objects=false, useInstanceof=false}, useBlocks=false, generateComments=false, toString={template=${object.className} [${member.name()}=${member.value}, ${otherMembers}], codeStyle=STRING_CONCATENATION, skipNullValues=false, listArrayContents=true, limitElements=0.0}}, selectionRange={enabled=true}, sources={organizeImports={starThreshold=99.0, staticStarThreshold=99.0}}, templates={fileHeader=[], typeComment=[]}, references={includeAccessors=true}}}
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:18.407
+!MESSAGE >> document/didOpen
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:18.874
+!MESSAGE Reconciled 0. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:19.261
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:19.261
+!MESSAGE 15 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:19.265
+!MESSAGE Validated 1. Took 390 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:19.282
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:19.294
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:19.296
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:19.310
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:19.310
+!MESSAGE >> watchers registered
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:19.880
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:23.283
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:23.316
+!MESSAGE >> document/completion
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:23.382
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:23.504
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:23.654
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:24.100
+!MESSAGE Reconciled 0. Took 42 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:24.646
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:24.647
+!MESSAGE 15 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:24.647
+!MESSAGE Validated 1. Took 96 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:25.002
+!MESSAGE >> document/resolveCompletionItem
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:25.105
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:25.553
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:26.034
+!MESSAGE Reconciled 0. Took 28 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:26.289
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:26.299
+!MESSAGE >> document/completion
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:26.404
+!MESSAGE Completion request completed
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:26.709
+!MESSAGE Reconciled 0. Took 15 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:27.261
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:27.262
+!MESSAGE 16 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:27.262
+!MESSAGE Validated 1. Took 101 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:28.608
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:29.026
+!MESSAGE Reconciled 0. Took 12 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:29.529
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:29.529
+!MESSAGE 15 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:29.529
+!MESSAGE Validated 1. Took 102 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:33.373
+!MESSAGE >> document/willSaveWaitUntil
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:33.383
+!MESSAGE >> document/didSave
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:29:33.409
+!MESSAGE >> document/didClose
+!SESSION 2021-01-11 13:31:49.377 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_275
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/kyle/.config/coc/extensions/coc-java-data/jdt_ws_3bef534c8833ee598cd4d59a0bc62a5b
+
+!ENTRY org.eclipse.core.resources 2 10035 2021-01-11 13:31:49.698
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:50.632
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:50.690
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:50.708
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:50.714
+!MESSAGE Initializing Java Language Server 0.57.0.202006172108
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:50.722
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:50.723
+!MESSAGE Non-Static Commands: [java.edit.organizeImports, java.project.refreshDiagnostics, java.project.import, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.provideSemanticTokens, java.project.getAll, java.project.isTestFile, java.project.getClasspaths, java.project.getSemanticTokensLegend, java.project.getSettings, java.project.updateSourceAttachment, java.project.resolveSourceAttachment, java.project.addToSourcePath]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:50.734
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:51.559
+!MESSAGE Importing Gradle project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:51.560
+!MESSAGE battlecode21 was modified since last time the workspace was opened, must be synchronized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:51.995
+!MESSAGE Workspace initialized in 540ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.040
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.047
+!MESSAGE >> workspace/didChangeConfiguration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.062
+!MESSAGE >> New configuration: {java={enabled=true, jdt={ls={vmargs=-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication}}, errors={incompleteClasspath={severity=warning}}, configuration={checkProjectSettingsExclusions=true, updateBuildConfiguration=interactive, runtimes=[]}, trace={server=off}, import={gradle={enabled=true, wrapper={enabled=true}, offline={enabled=false}}, maven={enabled=true}, exclusions=[**/node_modules/**, **/.metadata/**, **/archetype-resources/**, **/META-INF/maven/**]}, maven={updateSnapshots=false, downloadSources=false}, referencesCodeLens={enabled=false}, signatureHelp={enabled=false}, implementationsCodeLens={enabled=false}, format={enabled=true, comments={enabled=true}, onType={enabled=true, fixComment={enabled=true}}}, saveActions={organizeImports=false}, project={referencedLibraries=[lib/**/*.jar], resourceFilters=[node_modules, .git]}, autobuild={enabled=true}, maxConcurrentBuilds=1.0, completion={maxResults=0.0, enabled=true, overwrite=true, guessMethodArguments=false, favoriteStaticMembers=[org.junit.Assert.*, org.junit.Assume.*, org.junit.jupiter.api.Assertions.*, org.junit.jupiter.api.Assumptions.*, org.junit.jupiter.api.DynamicContainer.*, org.junit.jupiter.api.DynamicTest.*, org.mockito.Mockito.*, org.mockito.ArgumentMatchers.*, org.mockito.Answers.*], filteredTypes=[java.awt.*, com.sun.*], importOrder=[java, javax, com, org]}, progressReports={enabled=true}, foldingRange={enabled=true}, codeGeneration={hashCodeEquals={useJava7Objects=false, useInstanceof=false}, useBlocks=false, generateComments=false, toString={template=${object.className} [${member.name()}=${member.value}, ${otherMembers}], codeStyle=STRING_CONCATENATION, skipNullValues=false, listArrayContents=true, limitElements=0.0}}, selectionRange={enabled=true}, sources={organizeImports={starThreshold=99.0, staticStarThreshold=99.0}}, templates={fileHeader=[], typeComment=[]}, references={includeAccessors=true}}}
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.065
+!MESSAGE >> document/didOpen
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.492
+!MESSAGE Reconciled 0. Took 0 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.819
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.820
+!MESSAGE 15 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.824
+!MESSAGE Validated 1. Took 329 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.836
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.847
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.849
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.860
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:31:52.860
+!MESSAGE >> watchers registered
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:00.299
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:02.884
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:03.310
+!MESSAGE Reconciled 0. Took 13 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:03.429
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:03.852
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:03.852
+!MESSAGE 21 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:03.853
+!MESSAGE Validated 1. Took 93 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:10.251
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:10.719
+!MESSAGE Reconciled 0. Took 15 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:10.737
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:11.250
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:11.250
+!MESSAGE 15 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:11.250
+!MESSAGE Validated 1. Took 81 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:15.289
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:18.600
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:19.010
+!MESSAGE Reconciled 0. Took 7 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:19.478
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:19.478
+!MESSAGE 21 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:19.479
+!MESSAGE Validated 1. Took 68 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:23.882
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:24.344
+!MESSAGE Reconciled 0. Took 7 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:24.375
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:24.819
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:24.819
+!MESSAGE 15 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:24.820
+!MESSAGE Validated 1. Took 74 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:28.893
+!MESSAGE >> document/prepareRename
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:32.286
+!MESSAGE >> document/rename
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:32.732
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:37.958
+!MESSAGE >> document/prepareRename
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:41.442
+!MESSAGE >> document/rename
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:41.527
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:41.985
+!MESSAGE Reconciled 0. Took 6 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:42.010
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:42.509
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:42.510
+!MESSAGE 15 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:42.510
+!MESSAGE Validated 1. Took 74 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:43.566
+!MESSAGE >> document/didChange
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:43.973
+!MESSAGE Reconciled 0. Took 5 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:44.012
+!MESSAGE >> document/documentHighlight
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:44.487
+!MESSAGE begin problem for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:44.487
+!MESSAGE 15 problems reported for /EnlightenmentCenter.java
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:32:44.487
+!MESSAGE Validated 1. Took 63 ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 13:39:57.921
+!MESSAGE >> document/didClose
+!SESSION 2021-01-11 17:42:23.395 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_275
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -data /home/kyle/.config/coc/extensions/coc-java-data/jdt_ws_3bef534c8833ee598cd4d59a0bc62a5b
+
+!ENTRY org.eclipse.core.resources 2 10035 2021-01-11 17:42:23.721
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:24.680
+!MESSAGE class org.eclipse.jdt.ls.core.internal.JavaLanguageServerPlugin is started
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:24.755
+!MESSAGE Main thread is waiting
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:24.774
+!MESSAGE >> initialize
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:24.779
+!MESSAGE Initializing Java Language Server 0.57.0.202006172108
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:24.789
+!MESSAGE Static Commands: []
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:24.790
+!MESSAGE Non-Static Commands: [java.edit.organizeImports, java.project.refreshDiagnostics, java.project.import, java.project.removeFromSourcePath, java.project.listSourcePaths, java.project.provideSemanticTokens, java.project.getAll, java.project.isTestFile, java.project.getClasspaths, java.project.getSemanticTokensLegend, java.project.getSettings, java.project.updateSourceAttachment, java.project.resolveSourceAttachment, java.project.addToSourcePath]
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:24.803
+!MESSAGE >> initialized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:29.376
+!MESSAGE Importing Gradle project(s)
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:29.377
+!MESSAGE battlecode21 was modified since last time the workspace was opened, must be synchronized
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:29.915
+!MESSAGE Workspace initialized in 629ms
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:29.920
+!MESSAGE >> initialization job finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:29.926
+!MESSAGE >> workspace/didChangeConfiguration
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:29.936
+!MESSAGE >> New configuration: {java={enabled=true, jdt={ls={vmargs=-noverify -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication}}, errors={incompleteClasspath={severity=warning}}, configuration={checkProjectSettingsExclusions=true, updateBuildConfiguration=interactive, runtimes=[]}, trace={server=off}, import={gradle={enabled=true, wrapper={enabled=true}, offline={enabled=false}}, maven={enabled=true}, exclusions=[**/node_modules/**, **/.metadata/**, **/archetype-resources/**, **/META-INF/maven/**]}, maven={updateSnapshots=false, downloadSources=false}, referencesCodeLens={enabled=false}, signatureHelp={enabled=false}, implementationsCodeLens={enabled=false}, format={enabled=true, comments={enabled=true}, onType={enabled=true, fixComment={enabled=true}}}, saveActions={organizeImports=false}, project={referencedLibraries=[lib/**/*.jar], resourceFilters=[node_modules, .git]}, autobuild={enabled=true}, maxConcurrentBuilds=1.0, completion={maxResults=0.0, enabled=true, overwrite=true, guessMethodArguments=false, favoriteStaticMembers=[org.junit.Assert.*, org.junit.Assume.*, org.junit.jupiter.api.Assertions.*, org.junit.jupiter.api.Assumptions.*, org.junit.jupiter.api.DynamicContainer.*, org.junit.jupiter.api.DynamicTest.*, org.mockito.Mockito.*, org.mockito.ArgumentMatchers.*, org.mockito.Answers.*], filteredTypes=[java.awt.*, com.sun.*], importOrder=[java, javax, com, org]}, progressReports={enabled=true}, foldingRange={enabled=true}, codeGeneration={hashCodeEquals={useJava7Objects=false, useInstanceof=false}, useBlocks=false, generateComments=false, toString={template=${object.className} [${member.name()}=${member.value}, ${otherMembers}], codeStyle=STRING_CONCATENATION, skipNullValues=false, listArrayContents=true, limitElements=0.0}}, selectionRange={enabled=true}, sources={organizeImports={starThreshold=99.0, staticStarThreshold=99.0}}, templates={fileHeader=[], typeComment=[]}, references={includeAccessors=true}}}
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:30.280
+!MESSAGE >> build jobs finished
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:30.284
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:30.287
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:30.330
+!MESSAGE >> registerFeature 'workspace/didChangeWatchedFiles'
+
+!ENTRY org.eclipse.jdt.ls.core 1 0 2021-01-11 17:42:30.331
+!MESSAGE >> watchers registered
