@@ -1,0 +1,15 @@
+#!/bin/sh
+get_temps(){
+    temp0=$(sensors | awk '/Core 0/ {print substr($3,2,500) }')
+    temp1=$(sensors | awk '/Core 1/ {print substr($3,2,500) }')
+    temp2=$(sensors | awk '/Core 2/ {print substr($3,2,500) }')
+    temp3=$(sensors | awk '/Core 3/ {print substr($3,2,500) }')
+    notify-send "$(printf "0: $temp0\n1: $temp1\n2: $temp2\n3: $temp3")"
+}
+case $BUTTON in
+    1) kitty psensor ;;
+    3) get_temps
+esac
+
+
+sensors | awk '/Core 0/ {print substr($3,2,500) }'

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+pamixer --get-mute &>/dev/null && echo ""
+
+VOL="$(pamixer --get-volume)"
+
+if [ "$VOL" -gt "80" ]; then
+    ICON="墳"
+elif [ "$VOL" -lt "30" ]; then
+    ICON=""
+else
+    ICON="奔"
+fi
+
+echo "$ICON$VOL%"

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case $BUTTON in
+    1) paru -Qu &>/dev/null && notify-send "$(printf "$(pacman -Qu)")"
+esac
+
+PACKAGE="📦"
+UPDATE="⬆"
+echo "$UPDATE/$PACKAGE: $(paru -Qu | wc -l)/$(paru -Q | wc -l)"
