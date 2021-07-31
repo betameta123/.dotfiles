@@ -37,3 +37,14 @@ if has("autocmd")
 		autocmd BufNewFile,BufRead *.asy set syntax=asy
 	augroup END
 endif
+
+fun! TrimWhiteSpace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+augroup WhiteSpace
+    autocmd!
+    autocmd BufWritePre * :call TrimWhiteSpace()
+augroup END

@@ -1,0 +1,123 @@
+snippet item:: "itemize list" A
+\begin{itemize}
+	\item{${1}}
+\end{itemize}
+endsnippet
+
+snippet enum:: "list" A
+\begin{enumerate}
+	\item{${1}}
+\end{enumerate}
+endsnippet
+
+snippet theo:: "theorem block" A
+\begin{Theorem}{${1}}{${2}}
+${3}
+\end{Theorem}
+endsnippet
+
+snippet def:: "definition block" A
+\begin{Definition}{${1}}{${2}}
+${3}
+\end{Definition}
+endsnippet
+
+snippet ex:: "example block" A
+\begin{Example}{${1}}{${2}}
+${3}
+\end{Example}
+endsnippet
+
+snippet tableofcontents "Table of Contents" Ai
+	\tableofcontents
+	\pagebreak
+	\addcontentsline{toc}{section}{${1}}
+	\section*{${1}}
+		${2}
+endsnippet
+
+snippet checklist:: "checklist" Ai
+\begin{CheckList}{${1:Task}}
+	\Task{${2:open}}{${3}}
+\end{CheckList}
+endsnippet
+
+snippet center:: "center text" Ai
+\begin{center}
+	${1}
+\end{center}
+endsnippet
+
+snippet lstlisting:: "Code Block" Ai
+\begin{lstlisting}[language=${1:Python}]
+	${2}
+\end{lstlisting}
+endsnippet
+
+
+snippet sec:: "Section" A
+\section{${1}}
+endsnippet
+
+snippet sec*:: "Section*" A
+\section*{${1}}
+endsnippet
+
+snippet ssec:: "Subsection" A
+\subsection{${1}}
+endsnippet
+
+snippet ssec*:: "Subsection*" A
+\subsection*{${1}}
+endsnippet
+
+snippet sssec:: "Subsubsection*" A
+\subsubsection{${1}}
+endsnippet
+
+
+snippet sssec*:: "Subsubsection*" A
+\subsubsection*{${1}}
+endsnippet
+
+snippet img/ "image path" Ai
+\graphicspath { {${1:./images/}} }
+endsnippet
+
+snippet img: "images" Ai
+\includegraphics[${1:scale=0.5}]{${2:images/}}
+endsnippet
+
+#Symbols-----------------------------------------------------------------------------------------
+
+snippet // "fractions" Ai
+\frac{${1}}{${2}}
+endsnippet
+
+snippet != "not equal" A
+\ne
+endsnippet
+
+snippet ... "dots" A
+...
+endsnippet
+#Math-----------------------------------------------------------------------------------------
+
+snippet sum "sum" w
+\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+endsnippet
+
+snippet lim "limit" w
+\lim_{${1:n} \to ${2:\infty}}
+endsnippet
+
+snippet integral "integral" w
+\int_{${1:0}}^{${2}} ${3} \,${4:dx}
+endsnippet
+
+#deliminaters-----------------------------------------------------------------------------------------
+
+snippet $$ "Inline math dollars" Ai
+\(${1}\)
+endsnippet
+
