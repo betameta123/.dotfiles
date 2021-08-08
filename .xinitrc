@@ -1,5 +1,3 @@
-#!/bin/sh
-
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
@@ -48,14 +46,19 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-#picom blur
-# compton --blur-background --blur-method kawase --blur-strength 12 --opacity-rule 65:'class_g="discord","Alacritty"' --
+export PATH=/home/kyle/.local/bin/statusScripts:$PATH
+export PATH=/home/kyle/.local/bin:$PATH
+
+xrandr --output DP-0 --rate 144.00 --rotate right &
+xrandr --output HDMI-0 --rate 144.00 --left-of DP-0 --primary &
 picom --experimental-backend &
-#Wallpaper
-xwallpaper --center ~/Pictures/Wallpaper/wallpaper.png &
 ~/.config/bashconf/git-prompt.sh
-#while true; do
-#	dwm >/dev/null 2>&1
-#done 
-#exec dwm 
-exec i3
+setxkbmap dvorak -option "grp:alt_space_toggle"
+nitrogen --restore &
+xsetwacom set "Wacom Intuos S Pad pad" Button 2 "key +ctrl d -ctrl"
+xsetwacom set "Wacom Intuos S Pad pad" Button 1 "key +ctrl z -ctrl"
+~/.local/src/scripts/change_key.sh
+
+ibus-daemon -d &
+dwmblocks &
+~/.local/bin/restartdwm.sh
