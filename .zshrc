@@ -9,6 +9,11 @@ setopt PROMPT_SUBST
 export PATH=$PATH:/home/kyle/bin
 export PATH=$PATH:/home/kyle/.gem/ruby/2.7.0/bin
 
+#Input Language
+export GTK_IM_MODULE=ibus
+export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.cache/zsh/history
 HISTSIZE=1000
@@ -101,3 +106,5 @@ source /home/kyle/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 
 zstyle ':completion:*' menu select
 
+
+alias luamake=/home/kyle/tmp/lua-language-server/3rd/luamake/luamake
