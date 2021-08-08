@@ -27,6 +27,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+"Coding
+Plug 'simrat39/rust-tools.nvim'
+
 call plug#end()
 
 "-------------------------------------------------------------------------------
@@ -108,6 +111,7 @@ source $HOME/.config/nvim/barcolor.vim
 source $HOME/.config/nvim/plugin/markdown-preview.vim
 source $HOME/.config/nvim/plugin/lsp.vim
 source $HOME/.config/nvim/plugin/telescope.vim
+source $HOME/.config/nvim/plugin/rust.vim
 lua require('beta.lsp')
 lua require('beta.telescope')
 source $HOME/.config/nvim/commands.vim

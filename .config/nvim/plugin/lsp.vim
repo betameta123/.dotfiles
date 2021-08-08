@@ -9,7 +9,6 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
     \ 'buffer': v:true,
     \ 'nvim_lsp': v:true,
     \ }
-let g:compe.source.tabnine = v:true
 
 let g:compe = {}
 let g:compe.enabled = v:true
@@ -37,14 +36,15 @@ let g:compe.source.ultisnips = v:true
 let g:compe.source.luasnip = v:true
 let g:compe.source.emoji = v:true
 
-" let g:compe.source.tabnine = {}
-" let g:compe.source.tabnine.max_line = 1000
-" let g:compe.source.tabnine.max_num_results = 6
-" let g:compe.source.tabnine.priority = 5000
-" " setting sort to false means compe will leave tabnine to sort the completion items
-" let g:compe.source.tabnine.sort = v:false
-" let g:compe.source.tabnine.show_prediction_strength = v:true
-" let g:compe.source.tabnine.ignore_pattern = ''
+let g:compe.source.tabnine = v:true
+let g:compe.source.tabnine = {}
+let g:compe.source.tabnine.max_line = 1000
+let g:compe.source.tabnine.max_num_results = 6
+let g:compe.source.tabnine.priority = 0
+" setting sort to false means compe will leave tabnine to sort the completion items
+let g:compe.source.tabnine.sort = v:true
+let g:compe.source.tabnine.show_prediction_strength = v:true
+let g:compe.source.tabnine.ignore_pattern = ''
 
 inoremap <silent><expr> <CR>      compe#confirm('<CR>')
 
@@ -58,8 +58,6 @@ nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<
 nnoremap <silent>gr <cmd>lua require('lspsaga.rename').rename()<CR>
 nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
 nnoremap <silent><leader>cd <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
-nnoremap <silent> <leader>cd :Lspsaga show_line_diagnostics<CR>
-nnoremap <silent><leader>cc <cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<CR>
 
 nnoremap <silent> [e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
 nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
