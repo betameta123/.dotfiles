@@ -22,13 +22,22 @@ alias \
 
 #Share Screen
 alias \
-    ss="while true; do timeout 120s mon2cam --monitor 0 -f 30 -r 1920:1080 -s; sleep .3; done"\
-    s="while true; do timeout 120s mon2cam --monitor 0 -f 30 -r 1920:1080; sleep .3; done"
+    ss="mon2cam --monitor 0 -f 30 -r 1920:1080 -s"\
+    # ss="while true; do timeout 120s mon2cam --monitor 0 -f 30 -r 1920:1080 -s; sleep .3; done"\
+    s="mon2cam --monitor 0 -f 30 -r 1920:1080"
+    # s="while true; do timeout 120s mon2cam --monitor 0 -f 30 -r 1920:1080; sleep .3; done"
 #Rust
 alias \
     cn="cargo new" \
     cb="cargo build" \
     cr="cargo run"
+
+##spicetify
+alias \
+   uspice="spicetify config extensions dribbblish.js
+       spicetify config current_theme Dribbblish color_scheme custom
+       spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+       spicetify apply"
 
 #config
 alias \

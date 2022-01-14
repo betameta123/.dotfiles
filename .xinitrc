@@ -49,16 +49,16 @@ fi
 export PATH=/home/kyle/.local/bin/statusScripts:$PATH
 export PATH=/home/kyle/.local/bin:$PATH
 
+xsetwacom set "Wacom Intuos S Pad pad" Button 1 "key +ctrl z -ctrl" &
+xsetwacom set "Wacom Intuos S Pad pad" Button 2 "key +ctrl d -ctrl" &
+
 xrandr --output DP-0 --rate 144.00 --rotate right &
 xrandr --output HDMI-0 --rate 144.00 --left-of DP-0 --primary &
-picom --experimental-backend &
-~/.config/bashconf/git-prompt.sh
-setxkbmap dvorak -option "grp:alt_space_toggle"
 nitrogen --restore &
-xsetwacom set "Wacom Intuos S Pad pad" Button 2 "key +ctrl d -ctrl"
-xsetwacom set "Wacom Intuos S Pad pad" Button 1 "key +ctrl z -ctrl"
-~/.local/src/scripts/change_key.sh
-
-ibus-daemon -d &
+#/usr/bin/pipewire &
+#/usr/bin/pipewire-pulse &
+#/usr/bin/pipewire-media-session &
+picom --experimental-backends &
+ibus-daemon -drxR &
 dwmblocks &
 ~/.local/bin/restartdwm.sh
