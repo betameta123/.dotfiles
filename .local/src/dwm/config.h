@@ -1,5 +1,7 @@
 /* See LICENSE file for copyright and license details. */
-/* appearance */ static const unsigned int borderpx  = 1;        /* border pixel of windows */ static const unsigned int snap      = 32;       /* snap pixel */ static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
+/* appearance */ static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int snap      = 32;       /* snap pixel */
+static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const unsigned int gappih    = 20;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
@@ -112,7 +114,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
     { MODKEY,                       XK_b,      spawn,           SHCMD("firefox") },
     { MODKEY,                       XK_g,      spawn,           SHCMD("gimp")},
-    { MODKEY,                       XK_z,      spawn,           SHCMD("zathura")},
     { MODKEY,                       XK_p,      spawn,           SHCMD("bitwarden")},
     { MODKEY,                       XK_F1,     spawn,           SHCMD("discord")},
     { MODKEY,                       XK_F2,     spawn,           SHCMD("slack")},

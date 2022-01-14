@@ -63,6 +63,7 @@
 #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
 #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
 
+
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
 enum { SchemeNorm, SchemeSel, SchemeStatus, SchemeTagsSel, SchemeTagsNorm, SchemeInfoSel, SchemeInfoNorm }; /* color schemes */
@@ -98,7 +99,7 @@ struct Client {
 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
 	int bw, oldbw;
 	unsigned int tags;
- 	int isfixed, iscentered, isfloating, isalwaysontop, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow;   
+ 	int isfixed, iscentered, isfloating, isalwaysontop, isurgent, neverfocus, oldstate, isfullscreen, isterminal, noswallow;
     pid_t pid;
     char scratchkey;
     int floatborderpx;
@@ -162,7 +163,7 @@ typedef struct {
 	int noswallow;
 	const char scratchkey;
 } Rule;
-    
+
 typedef struct {
 	const char *cmd;
 	int id;
@@ -482,7 +483,7 @@ attachstack(Client *c)
 void
 swallow(Client *p, Client *c)
 {
-
+    return;
 	if (c->noswallow || c->isterminal)
 		return;
 	if (c->noswallow && !swallowfloating && c->isfloating)
@@ -558,7 +559,7 @@ buttonpress(XEvent *e)
 
 			x = selmon->ww - statusw;
 			click = ClkStatusText;
-           
+
 			statuscmdn = 0;
 			for (text = s = stext; *s && x <= ev->x; s++) {
 				if ((unsigned char)(*s) < ' ') {
@@ -820,7 +821,7 @@ destroynotify(XEvent *e)
 
 	if ((c = wintoclient(ev->window)))
 		unmanage(c, 1);
-    
+
 	else if ((c = swallowingclient(ev->window)))
 		unmanage(c->swallowing, 1);
 }
@@ -876,7 +877,7 @@ drawbar(Monitor *m)
 	if (m == selmon) { /* status is only drawn on selected monitor */
         char *text, *s, ch;
 		drw_setscheme(drw, scheme[SchemeNorm]);
-        
+
 		x = 0;
 		for (text = s = stext; *s; s++) {
 			if ((unsigned char)(*s) < ' ') {
@@ -994,6 +995,7 @@ focus(Client *c)
 	selmon->sel = c;
 	drawbars();
 }
+
 
 /* there are some broken focus acquiring clients needing extra handling */
 void
@@ -1871,7 +1873,7 @@ spawn(const Arg *arg)
 	}
 }
 
-void 
+void
 spawnscratch(const Arg *arg)
 {
 	if (fork() == 0) {
@@ -2080,7 +2082,7 @@ unmanage(Client *c, int destroyed)
 		XUngrabServer(dpy);
 	}
 	free(c);
-    
+
 	if (!s) {
 		arrange(m);
 		focus(NULL);
