@@ -2,9 +2,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Auto Complete
 Plug 'neovim/nvim-lspconfig'
-Plug 'tzachar/compe-tabnine', { 'do': './install.sh' }
-Plug 'glepnir/lspsaga.nvim'
 Plug 'SirVer/ultisnips'
+Plug 'brymer-meneses/grammar-guard.nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
 
 "formating
 Plug 'Raimondi/delimitMate'
@@ -19,14 +24,12 @@ Plug 'bluz71/vim-nightfly-guicolors'
 
 "Notes
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 "File
-Plug 'ryanoasis/vim-devicons'
-Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
-
+Plug 'nvim-telescope/telescope-file-browser.nvim'
 "Coding
 Plug 'simrat39/rust-tools.nvim'
 
@@ -101,7 +104,10 @@ inoremap <c-k> <esc>:m .-2<cr>==gi
 nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
 
-nnoremap <leader>ll :!kitty latexmk -pvc % &<CR>
+nnoremap <leader>ll :LLPStartPreview<CR>
+nnoremap <leader>lf :LLPStartPreview
+
+let g:livepreview_previewer = 'zathura'
 
 let g:UltiSnipsExpandTrigger = "<C-n>"
 let g:UltiSnipsJumpForwardTrigger = "<C-n>"

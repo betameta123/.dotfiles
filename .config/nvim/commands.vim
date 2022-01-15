@@ -36,9 +36,4 @@ augroup ChangeClass
     autocmd Vimleave *.tex silent! exec "!xdotool getactivewindow set_window --class kitty"
 augroup END
 
-augroup LspSage
-    autocmd CursorHold * lua require'lspsaga.diagnostic'.show_line_diagnostics()
-    autocmd CursorHoldI * silent! lua require('lspsaga.signaturehelp').signature_help()
-augroup END
-
 
