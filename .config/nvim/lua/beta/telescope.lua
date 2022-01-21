@@ -36,41 +36,12 @@ function M.grep_prompt()
   }
 end
 
-function M.path_explorer()
-  require("telescope.builtin").file_browser {
-    prompt_title = " File Browser",
-    path_display = { "shorten" },
-    layout_strategy = "horizontal",
-    layout_config = { preview_width = 0.65, width = 0.75 },
-  }
-end
+require("telescope").load_extension "file_browser"
 
-function M.file_explorer()
-  require("telescope.builtin").file_browser {
-    prompt_title = " File Browser",
-    path_display = { "shorten" },
-    cwd = "~",
-    layout_strategy = "horizontal",
-    layout_config = { preview_width = 0.65, width = 0.75 },
-  }
-end
-
-M.search_dotfiles = function()
-    require("telescope.builtin").find_files({
-        prompt_title = "< VimRC >",
-        cwd = "~/.config/nvim/",
-        hidden = true,
-    })
-end
-
-function M.find_notes()
-  require("telescope.builtin").find_files {
-    prompt_title = " Find Notes",
-    path_display = { "shorten" },
-    cwd = "~/Documents/My-Notes",
-    layout_strategy = "horizontal",
-    layout_config = { preview_width = 0.65, width = 0.5 },
-  }
-end
-
+vim.api.nvim_set_keymap(
+  "n",
+  "<space>n",
+  ":Telescope file_browser<cr>",
+  { noremap = true }
+)
 return M

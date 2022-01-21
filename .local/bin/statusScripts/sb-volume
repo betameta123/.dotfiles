@@ -4,6 +4,15 @@ pamixer --get-mute &>/dev/null && echo ""
 
 VOL="$(pamixer --get-volume)"
 
+case $BUTTON in
+    1) pavucontrol ;;
+    2) easyeffects ;;
+    3) pamixer -t; kill -36 $(pidof dwmblocks);;
+    4) pamixer --allow-boost -i 1; kill -36 $(pidof dwmblocks) ;;
+    5) pamixer --allow-boost -d 1; kill -36 $(pidof dwmblocks) ;;
+
+esac
+
 if [ "$VOL" -gt "80" ]; then
     ICON="墳"
 elif [ "$VOL" -lt "30" ]; then

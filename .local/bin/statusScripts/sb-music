@@ -9,4 +9,4 @@ case $BUTTON in
     3) dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 esac
 
-printf "$SONG($ARTIST)"
+if [ "$SONG" != "" ]; then printf "$SONG($ARTIST)"; fi
