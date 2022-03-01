@@ -21,18 +21,19 @@ require("telescope").setup({
             override_generic_sorter = false,
             override_file_sorter = true,
         },
-    },
+    }
 })
 
-require("telescope").load_extension("fzy_native")
 
+require("telescope").load_extension("fzy_native")
+require("telescope").load_extension("vimwiki")
 
 local M = {}
 
-function M.grep_prompt()
-  require("telescope.builtin").grep_string {
-    path_display = { "shorten" },
-    search = vim.fn.input "Rg ",
+function M.search_dotfiles()
+  require("telescope.builtin").find_files {
+      prompt_title = "<nvimRC>",
+      cwd = "~/.config/nvim/",
   }
 end
 
@@ -44,4 +45,5 @@ vim.api.nvim_set_keymap(
   ":Telescope file_browser<cr>",
   { noremap = true }
 )
+
 return M
