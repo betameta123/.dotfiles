@@ -112,17 +112,17 @@ nnoremap cW *``cgN
 " Move text
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
-inoremap <c-j> <esc>:m .+1<cr>==gi
-inoremap <c-k> <esc>:m .-2<cr>==gi
+" inoremap <c-j> <esc>:m .+1<cr>==gi
+" inoremap <c-k> <esc>:m .-2<cr>==gi
 
 nnoremap <leader>ll :LLPStartPreview<CR>
 
 let g:livepreview_previewer = 'zathura'
 
 
-let g:UltiSnipsExpandTrigger = "<C-n>"
-let g:UltiSnipsJumpForwardTrigger = "<C-n>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 source $HOME/.config/nvim/barcolor.vim
 source $HOME/.config/nvim/plugin/markdown-preview.vim
