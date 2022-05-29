@@ -51,26 +51,9 @@ local cmp = require'cmp'
     })
   })
 
-  -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline('/', {
-    sources = {
-      { name = 'buffer' }
-    }
-  })
-
-  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-  cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
-    })
-  })
-
 require'lspconfig'.jedi_language_server.setup{ on_attach=on_attach }
 require'lspconfig'.bashls.setup{ on_attach=on_attach }
 require'lspconfig'.rust_analyzer.setup{ on_attach=on_attach }
-require('rust-tools').setup({})
 require'lspconfig'.texlab.setup{
     filetypes = { "tex", "bib"},
     settings = {
@@ -87,19 +70,24 @@ require'lspconfig'.texlab.setup{
     },
     on_attach=on_attach
 }
-local lspconfig = require'lspconfig'
-lspconfig.ccls.setup {
-  init_options = {
-    compilationDatabaseDirectory = "build";
-    index = {
-      threads = 0;
-    };
-    clang = {
-      excludeArgs = { "-frounding-math"} ;
-    };
-  }
-}
 
+-- require'lspconfig'.ccls.setup {
+--     filetypes = { "c","cpp" },
+--   init_options = {
+--     compilationDatabaseDirectory = "build";
+--     index = {
+--       threads = 0;
+--     },
+--   }
+-- }
+require'lspconfig'.clangd.setup{ on_attach = on_attach }
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
 --------------------------------------------------------------------------------
 
 local system_name
@@ -146,6 +134,24 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require'lspconfig'.html.setup {
+    capabilities = capabilities,
+    on_attach = on_attach
+}
+
+require'lspconfig'.cssls.setup {
+  capabilities = capabilities,
+}
+
+lspconfig.emmet_ls.setup({
+    -- on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+})
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = true,
