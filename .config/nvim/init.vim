@@ -24,6 +24,10 @@ Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
+"fuzzy finding
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 call plug#end()
 
 "-------------------------------------------------------------------------------

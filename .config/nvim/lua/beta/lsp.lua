@@ -70,16 +70,6 @@ require'lspconfig'.texlab.setup{
     },
     on_attach=on_attach
 }
-
--- require'lspconfig'.ccls.setup {
---     filetypes = { "c","cpp" },
---   init_options = {
---     compilationDatabaseDirectory = "build";
---     index = {
---       threads = 0;
---     },
---   }
--- }
 require'lspconfig'.clangd.setup{ on_attach = on_attach }
 
 require'nvim-treesitter.configs'.setup {
@@ -148,9 +138,9 @@ require'lspconfig'.cssls.setup {
 }
 
 lspconfig.emmet_ls.setup({
-    -- on_attach = on_attach,
+    on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less'},
 })
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

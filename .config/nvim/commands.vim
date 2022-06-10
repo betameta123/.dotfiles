@@ -14,6 +14,8 @@ if has("autocmd")
                     \ 0norm dd
 	augroup END
 
+autocmd BufNewFile,BufRead *.njk set filetype=html
+
 	augroup asy_ft
 		autocmd!
 		autocmd BufNewFile,BufRead *.asy set syntax=asy
@@ -30,10 +32,4 @@ augroup WhiteSpace
     autocmd!
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
-
-augroup ChangeClass
-    autocmd VimEnter *.tex silent! exec "!xdotool getactivewindow set_window --class texz"
-    autocmd Vimleave *.tex silent! exec "!xdotool getactivewindow set_window --class kitty"
-augroup END
-
 
