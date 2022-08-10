@@ -28,6 +28,10 @@ Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
+"Programming
+Plug 'mfussenegger/nvim-jdtls'
+
 call plug#end()
 
 "-------------------------------------------------------------------------------
@@ -59,7 +63,6 @@ set splitright
 
 "Spell Check
 set encoding=UTF-8
-setlocal spell
 set spelllang=nl,en_us
 inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
 

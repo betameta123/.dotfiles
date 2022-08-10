@@ -33,3 +33,4 @@ augroup WhiteSpace
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
 
+autocmd BufRead,BufNewFile latex,tex,md,markdown,text,txt setlocal spell

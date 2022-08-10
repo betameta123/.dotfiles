@@ -2,6 +2,22 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
+local on_attach = function(client, bufnr)
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Mappings.
+  -- See `:help vim.lsp.*` for documentation on any of the below functions
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', '<space>gtD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', '<space>gtd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', '<space>gh', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>gtr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+end
 
 local cmp = require'cmp'
 
@@ -51,7 +67,28 @@ local cmp = require'cmp'
     })
   })
 
-require'lspconfig'.jedi_language_server.setup{ on_attach=on_attach }
+--------------------------------------------------------------------------------
+
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+}
+
+require'lspconfig'.pyright.setup{ on_attach=on_attach }
+require'lspconfig'.jdtls.setup{ on_attach=on_attach }
 require'lspconfig'.bashls.setup{ on_attach=on_attach }
 require'lspconfig'.rust_analyzer.setup{ on_attach=on_attach }
 require'lspconfig'.texlab.setup{
@@ -71,25 +108,6 @@ require'lspconfig'.texlab.setup{
     on_attach=on_attach
 }
 require'lspconfig'.clangd.setup{ on_attach = on_attach }
-
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-}
---------------------------------------------------------------------------------
-
-local system_name
-if vim.fn.has("mac") == 1 then
-  system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-  system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-  system_name = "Windows"
-else
-  print("Unsupported system for sumneko")
-end
 
 -- set the path to the sumneko installation; if you previously installed via the now deprecated :LspInstall, use
 local sumneko_root_path = '/usr/share/lua-language-server'
@@ -121,6 +139,9 @@ require'lspconfig'.sumneko_lua.setup {
       telemetry = {
         enable = false,
       },
+      completion = {
+        callSnippet = 'Replace',
+      },
     },
   },
 }
@@ -148,3 +169,4 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   signs = true,
   underline = true,
 })
+
