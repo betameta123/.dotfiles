@@ -2,17 +2,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " Auto Complete
 Plug 'neovim/nvim-lspconfig'
-Plug 'SirVer/ultisnips'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-
+Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'Raimondi/delimitMate'
 "
 "formating
-Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " Visual
 Plug 'vim-airline/vim-airline'
@@ -22,7 +24,9 @@ Plug 'bluz71/vim-nightfly-guicolors'
 
 "Notes
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+Plug 'lervag/vimtex'
+Plug 'renerocksai/calendar-vim'
+Plug 'renerocksai/telekasten.nvim'
 
 "fuzzy finding
 Plug 'nvim-lua/plenary.nvim'
@@ -47,11 +51,13 @@ set updatetime=300
 set shortmess+=c
 
 "Spacing
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set smarttab
 set expandtab
 set breakindent
+set smartindent
 set scrolloff=4
 
 "Line numbers
@@ -62,13 +68,9 @@ set splitbelow
 set splitright
 
 "Spell Check
-set encoding=UTF-8
+setlocal spell
 set spelllang=nl,en_us
-inoremap <C-l> <c-g>u<Esc>[s1z=`]a<c-g>u
-
-"delimate
-let delimitMate_balance_matchpairs = 1
-let delimitMate_expand_cr = 2
+inoremap <C-;> <c-g>u<Esc>[s1z=`]a<c-g>u
 
 "-------------------------------------------------------------------------------
 
@@ -99,6 +101,7 @@ nnoremap N Nzzzv
 nnoremap <c-j> :cn<CR>zzzv
 nnoremap <c-k> :cp<CR>zzzv
 
+let delimitMate_expand_cr = 1
 
 nnoremap cw *``cgn
 nnoremap cW *``cgN
@@ -107,17 +110,12 @@ nnoremap cW *``cgN
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-nnoremap <leader>pp :LLPStartPreview<CR>
-
-let g:livepreview_previewer = 'zathura'
-
-
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
 source $HOME/.config/nvim/barcolor.vim
 source $HOME/.config/nvim/plugin/markdown-preview.vim
 source $HOME/.config/nvim/plugin/lsp.vim
 lua require('beta.lsp')
+lua require('beta.luasnip')
+lua require('beta.tree-context')
+lua require('beta.telekasten')
 source $HOME/.config/nvim/commands.vim
+source $HOME/.config/nvim/plugin/telekasten.vim

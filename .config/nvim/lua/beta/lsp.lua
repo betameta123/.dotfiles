@@ -1,5 +1,8 @@
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local pid = vim.fn.getpid()
+local omnisharp_bin = "/home/kyle/Downloads/Packages/omnisharp/run"
+
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 local on_attach = function(client, bufnr)
@@ -11,7 +14,8 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
   vim.keymap.set('n', '<space>gtD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', '<space>gtd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', '<space>gh', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<space>gH', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', '<space>gh', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
@@ -19,54 +23,85 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 local cmp = require'cmp'
+local compare = require('cmp.config.compare')
+local luasnip = require("luasnip")
 
-  cmp.setup({
-    snippet = {
-      -- REQUIRED - you must specify a snippet engine
+cmp.setup({
+  window = {
+      documentation = true,
+  },
+
+  snippet = {
       expand = function(args)
-        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      end,
-    },
-    mapping = {
-      ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-      ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-      ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-      ['<C-e>'] = cmp.mapping({
-        i = cmp.mapping.abort(),
-        c = cmp.mapping.close(),
-      }),
-      ['<Tab>'] = function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        else
-          fallback()
-        end
-      end,
-    ['<S-Tab>'] = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        else
-          fallback()
-        end
+      -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-    },
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      -- { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
-    }, {
-      { name = 'buffer' },
-    })
-  })
+  },
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ["<CR>"] = cmp.mapping.confirm { select = false },
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
 
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    -- { name = 'vsnip' }, -- For vsnip users.
+    { name = 'luasnip' }, -- For luasnip users.
+    -- { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+    { name = 'cmp_tabnine' },
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+--------------------------------------------------------------------------------
+--Tabnine
+local tabnine = require('cmp_tabnine.config')
+
+tabnine.setup({
+	max_lines = 1000,
+	max_num_results = 10,
+	sort = true,
+	run_on_every_keystroke = true,
+	snippet_placeholder = '..',
+	ignored_file_types = {
+		-- default is not to ignore
+		-- uncomment to ignore in lua:
+		-- lua = true
+	},
+	show_prediction_strength = false
+})
 --------------------------------------------------------------------------------
 
 local system_name
@@ -85,11 +120,15 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
+  indent = {
+      enable = true,
+  },
 }
 
 require'lspconfig'.pyright.setup{ on_attach=on_attach }
-require'lspconfig'.jdtls.setup{ on_attach=on_attach }
+require'lspconfig'.jdtls.setup{ cmd = {'jdtls'} }
 require'lspconfig'.bashls.setup{ on_attach=on_attach }
+require'lspconfig'.eslint.setup{ }
 require'lspconfig'.rust_analyzer.setup{ on_attach=on_attach }
 require'lspconfig'.texlab.setup{
     filetypes = { "tex", "bib"},
@@ -158,6 +197,13 @@ require'lspconfig'.cssls.setup {
   capabilities = capabilities,
 }
 
+require'lspconfig'.omnisharp.setup{
+    cmd = { "mono", omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+    root_dir = lspconfig.util.root_pattern("*.csproj","*.sln");
+
+    ...
+}
+
 lspconfig.emmet_ls.setup({
     on_attach = on_attach,
     capabilities = capabilities,
@@ -169,4 +215,5 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   signs = true,
   underline = true,
 })
+
 

@@ -34,3 +34,6 @@ augroup WhiteSpace
 augroup END
 
 autocmd BufRead,BufNewFile latex,tex,md,markdown,text,txt setlocal spell
+autocmd BufRead,BufNewFile * :TSContextEnable
+
+autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
