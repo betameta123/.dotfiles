@@ -29,15 +29,14 @@ function ContextSetup(show_all_context)
                 "abstract_class_declaration",
                 "else_clause",
             },
-            -- tex = {
-            --     'chapter',
-            --     'section',
-            --     'subsection',
-            --     'subsubsection',
-            -- },
+            tex = {
+                'chapter',
+                'section',
+                'subsection',
+                'subsubsection',
+            },
         },
     })
 end
 
 ContextSetup(true)
-

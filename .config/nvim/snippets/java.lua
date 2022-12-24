@@ -38,8 +38,8 @@ ls.add_snippets(nil, {
     }}
     ]], i(0))),
     s("class", {c(1, {
-      t"",
       t"public ",
+      t"",
       t"private ",
       t"protected "
 
@@ -49,8 +49,8 @@ ls.add_snippets(nil, {
 
     s({trig = "sout", autotrig = true}, {
       c(1, {
-        sn(nil, { t"System.out.print(" , i(1), t");"}),
         sn(nil, { t"System.out.println(" , i(1), t");"}),
+        sn(nil, { t"System.out.print(" , i(1), t");"}),
         sn(nil, { t"System.out.printf(" , i(1), t");"}),
         sn(nil, { t"System.err.println(" , i(1), t");"}),
       })
@@ -61,12 +61,12 @@ ls.add_snippets(nil, {
       for({} {} = {}; {} < {}; {}{}) {{
         {}
       }}
-      ]], {i(1, "int"), i(2, "i"), i(3, "0"), rep(2), i(4, "max"), rep(2), i(5, "++"), i(0)}),
+      ]], {i(1, "int"), i(2, "i"), i(3, "0"), rep(2), i(4, "max"), rep(2), i(5, "++"), i(6), i(0)}),
       fmt([[
       for({} {}: {}) {{
         {}
       }}
-      ]], {i(1, "object"), i(2, "var"), i(3, "iterable"), i(0)})
+      ]], {i(1, "object"), i(2, "var"), i(3, "iterable"), i(4), i(0)})
     })
     ),
 

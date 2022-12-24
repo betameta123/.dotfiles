@@ -1,0 +1,15 @@
+# Fdb version 3
+["pdflatex"] 1671860603 "test.tex" "test.pdf" "test" 1671860603
+  "/usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1650215467 35752 024fb6c41858982481f6968b5fc26508 ""
+  "/usr/share/texmf-dist/tex/latex/base/article.cls" 1650215467 20144 8a7de377ae7a11ee924a7499611f5a9d ""
+  "/usr/share/texmf-dist/tex/latex/base/size10.clo" 1650215467 8448 96f18c76bf608a36ee6fbf021ac1dd32 ""
+  "/usr/share/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def" 1650215467 31644 9b75b7ffdb38fbd7bb4502cd6b086a3c ""
+  "/usr/share/texmf-dist/web2c/texmf.cnf" 1650215467 39911 2da6c67557ec033436fe5418a70a8a61 ""
+  "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1671850215 334215 ad2feb41952e3720830b65f83a01c5b0 ""
+  "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1671850210 2927666 777448587365cccd271cc68bc4ea757b ""
+  "test.aux" 1671860603 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "test.tex" 1671860602 64 64f5d049110c4b7129d06c27da21bfce ""
+  (generated)
+  "test.aux"
+  "test.log"
+  "test.pdf"
