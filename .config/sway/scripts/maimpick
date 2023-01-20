@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# This is bound to Shift+PrintScreen by default, requires maim. It lets you
+# choose the kind of screenshot to take, including copying the image or even
+# highlighting an area to copy. scrotcucks on suicidewatch right now.
+
+# variables
+OUTPUT="$HOME/Media/Pictures/$(date '+%y%m%d-%H%M-%S').png"
+
+case "$(printf "a selected area (copy)\\ncurrent window (copy)\\ndisplay (copy)\\nfull screen (copy)\\na selected area\\ncurrent window\\ndisplay\\nfull screen" | rofi -dmenu -theme $HOME/.config/rofi/launchers/type-6/style-9.rasi -l 6 -i -p "Screenshot which area?")" in
+    "a selected area (copy)") grimshot copy area ;; 
+    "current window (copy)") grimshot copy window ;; 
+    "display (copy)") grimshot copy OUTPUT ;;
+    "full screen (copy)") grimshot copy screen ;;
+    "a selected area") grimshot save area $OUTPUT ;;
+    "current window") grimshot save window $OUTPUT ;;
+    "display") grimshot save output $OUTPUT ;;
+    "full screen") grimshot save screen $OUTPUT ;; 
+esac
