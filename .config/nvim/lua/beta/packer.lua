@@ -7,6 +7,8 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use({"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"})
+
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  requires = {
@@ -24,7 +26,7 @@ return require('packer').startup(function(use)
 		  {'hrsh7th/cmp-nvim-lua'},
 
 		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
+		  -- {'L3MON4D3/LuaSnip'},
 	  }
   }
 
@@ -60,5 +62,10 @@ return require('packer').startup(function(use)
   use 'lervag/vimtex'
 
   use 'folke/tokyonight.nvim'
-
+  use 'norcalli/nvim-colorizer.lua'
+  
+  use {
+    'ggandor/lightspeed.nvim',
+    requires = { {'tpope/vim-repeat'} }
+  }
 end)

@@ -23,5 +23,6 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50
 
+vim.cmd("setlocal spell spelllang=en_us")
 vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "

@@ -37,7 +37,7 @@ local sympy = function(_, snip)
 end
 
 local function is_math()
-  return vim.fn["vimtex#syntax#in_mathzone"]() ~= 0
+  return vim.fn["vimtex#syntax#in_mathzone"]() == 0
 end
 
 local rec_ls
