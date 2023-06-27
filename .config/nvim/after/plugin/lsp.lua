@@ -1,43 +1,67 @@
-local lsp = require('lsp-zero')
+-- Setup language servers.
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lspconfig = require('lspconfig')
 
-lsp.preset('recommended')
+-- Language Servers
+lspconfig.pyright.setup {}
+lspconfig.clangd.setup{}
+lspconfig.emmet_ls.setup{}
+lspconfig.gopls.setup {
+  cmd = {"gopls", "serve"},
+  filetypes = {"go", "gomod"},
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    },
+  },
+}
+-- lspconfig.jdtls.setup{}
+lspconfig['hls'].setup{
+  filetypes = { 'haskell', 'lhaskell', 'cabal' },
+}
+require'lspconfig'.tsserver.setup{}
 
-lsp.ensure_installed({
-	'clangd',
-	'eslint',
-	'jdtls',
-	'jedi_language_server',
-	'rust_analyzer',
-	'sumneko_lua',
-	'texlab',
-	'tsserver'
-})
+-- luasnip setup
+local luasnip = require('luasnip')
 
-local has_words_before = function()
-  unpack = unpack or table.unpack
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
-
-local luasnip = require("luasnip")
-local cmp = require("cmp")
-local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-local handlers = require('nvim-autopairs.completion.handlers')
-
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ["<Tab>"] = cmp.mapping(function(fallback)
+-- nvim-cmp setup
+local cmp = require('cmp')
+cmp.setup {
+  -- luasnip completion within cmp
+  snippet = {
+    expand = function(args)
+      luasnip.lsp_expand(args.body)
+    end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    -- ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
+    -- ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+    -- -- C-b (back) C-f (forward) for snippet placeholder navigation.
+    ['<C-Space>'] = cmp.mapping.complete(),
+       ["<CR>"] = cmp.mapping({
+       i = function(fallback)
+         if cmp.visible() and cmp.get_active_entry() then
+           cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+         else
+           fallback()
+         end
+       end,
+       s = cmp.mapping.confirm({ select = true }),
+       c = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+     }),
+    ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
-      elseif has_words_before() then
-        cmp.complete()
       else
         fallback()
       end
-    end, { "i", "s" }),
-
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       elseif luasnip.jumpable(-1) then
@@ -45,17 +69,30 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
       else
         fallback()
       end
-    end, { "i", "s" }),
-})
+    end, { 'i', 's' }),
+  }),
+  sources = {
+    { name = 'buffer' },
+    { name = 'path' },
+    { name = 'luasnip' },
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
+    { name = 'nvim_lsp_signature_help' },
+  },
+  -- Do not auto select first option
+  preselect = cmp.PreselectMode.None,
+  complete = {
+    completeopt=menu,menuone,noinsert,noselect
+  }
+}
 
-lsp.setup_nvim_cmp({
-	mapping = cmp_mappings
-})
-
+-- autopairs setup
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+local handlers = require('nvim-autopairs.completion.handlers')
 cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done({
-filetypes = {
+    filetypes = {
       -- "*" is a alias to all filetypes
       ["*"] = {
         ["("] = {
@@ -73,50 +110,55 @@ filetypes = {
             cmp.lsp.CompletionItemKind.Method
           },
           ---@param char string
-          ---@param item item completion
-          ---@param bufnr buffer number
-          handler = function(char, item, bufnr)
-            -- Your handler function. Inpect with print(vim.inspect{char, item, bufnr})
+          ---@param item table item completion
+          ---@param bufnr number buffer number
+          ---@param rules table
+          ---@param commit_character table<string>
+          handler = function(char, item, bufnr, rules, commit_character)
+            -- Your handler function. Inpect with print(vim.inspect{char, item, bufnr, rules, commit_character})
           end
         }
       },
       -- Disable for tex
-      bash = false
+      tex = false
     }
   })
 )
 
-lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
-  vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, opts)
-  vim.keymap.set("n", "<leader>gh", vim.lsp.buf.hover, opts)
-  vim.keymap.set("n", "<leader>gws", vim.lsp.buf.workspace_symbol, opts)
-  vim.keymap.set("n", "<leader>gD", vim.diagnostic.open_float, opts)
-  vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-  vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
-  vim.keymap.set("n", "<leader>ga", vim.lsp.buf.code_action, opts)
-  vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, opts)
-  vim.keymap.set("n", "<leader>grn", vim.lsp.buf.rename, opts)
-  vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-end)
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
-lsp.setup {
-  highlight = {
-    enable = true,
-    disable = {"tex"},
-    disable = function(lang, buf)
-        local max_filesize = 100 * 1024 -- 100 KB
-        local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-        if ok and stats and stats.size > max_filesize then
-            return true
-        end
-    end,
+-- Use LspAttach autocommand to only map the following keys
+-- after the language server attaches to the current buffer
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
-    additional_vim_regex_highlighting = false,
-  }
-}
-lsp.setup()
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<space>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end,
+})

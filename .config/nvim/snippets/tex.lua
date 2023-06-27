@@ -37,7 +37,7 @@ local sympy = function(_, snip)
 end
 
 local function is_math()
-  return vim.fn["vimtex#syntax#in_mathzone"]() == 0
+  return vim.fn["vimtex#syntax#in_mathzone"]() == 1
 end
 
 local rec_ls
@@ -105,19 +105,23 @@ ls.add_snippets(nil, {
   tex = {
     ---------------------------------------------------------------------------
     -- Headers
-    s("title", fmta(
+    s("name", fmta(
     [[
-    \title{\textbf{<>: <>}}
-    \author{Professor: <>\\ Kyle Huang}
-    \date{<>, <>}
-    \pagebreak
-
+    \hfill\begin{tabular}{r}
+    <>\\
+    <>\\
+    <>\\
+    <>\\
+    \end{tabular}\\
+    \begin{center}
+      \underline{\textbf{<>}}
+    \end{center}
     ]], {
-      i(1, "Course Number"),
-      i(2, "Course Title"),
-      i(3),
-      i(4, "Semester"),
-      i(5, "University of Wisconsin-Madison"),
+      i(1, "Name"),
+      i(2, "Date"),
+      i(3, "Professor"),
+      i(4, "Course Title"),
+      i(5, "HW \\#"),
     })),
     s("tableofcontents", fmt(
     [[
@@ -127,12 +131,12 @@ ls.add_snippets(nil, {
 
     ---------------------------------------------------------------------------
     -- Sections
-    s("sec::", {t("\\section{"), i(1), t("}")}),
-    s("ssec::", {t("\\subsection{"), i(1), t("}")}),
-    s("sssec::", {t("\\subsubsection{"), i(1), t("}")}),
-    s("sec*", {t("\\section*{"), i(1), t("}")}),
-    s("ssec*", {t("\\subsection*{"), i(1), t("}")}),
-    s("sssec*", {t("\\subsubsection*{"), i(1), t("}")}),
+    s({trig = "sec::", snippetType='autosnippet'}, {t("\\section{"), i(1), t("}")}),
+    s({trig = "ssec::", snippetType='autosnippet'}, {t("\\subsection{"), i(1), t("}")}),
+    s({trig="sssec::", snippetType='autosnippet'}, {t("\\subsubsection{"), i(1), t("}")}),
+    s({trig="sec*", snippetType='autosnippet'}, {t("\\section*{"), i(1), t("}")}),
+    s({trig="ssec*", snippetType='autosnippet'}, {t("\\subsection*{"), i(1), t("}")}),
+    s({trig="sssec*", snippetType='autosnippet'}, {t("\\subsubsection*{"), i(1), t("}")}),
 
     ---------------------------------------------------------------------------
     -- Blocks
@@ -142,13 +146,24 @@ ls.add_snippets(nil, {
     \end{<>}
     ]], {i(1), i(0), rep(1)})),
 
-    s("itemize::", {
+    s("item::", {
       t({"\\begin{"}),
-      c(1, {t"itemize", t"enumerate"}),
+      t("itemize"),
       t{"}", ""},
-      t({"\t\\item "}), i(2), d(2, rec_ls, {}),
+      t({"\t\\item "}), i(1), d(2, rec_ls, {}),
       t({"", "\\end{"}),
-      rep(1),
+      t("itemize"),
+      t("}"),
+      i(0)
+    }),
+
+    s("enum::", {
+      t({"\\begin{"}),
+      t("enumerate"),
+      t{"}", ""},
+      t({"\t\\item "}), i(1), d(2, rec_ls, {}),
+      t({"", "\\end{"}),
+      t("enumerate"),
       t("}"),
       i(0)
     }),
@@ -288,23 +303,15 @@ ls.add_snippets(nil, {
     s({trig = "<=", snippetType='autosnippet'}, t"\\leq", {condition = is_math}),
     s({trig = ">=", snippetType='autosnippet'}, t"\\geq", {condition = is_math}),
     s({trig = "...", snippetType='autosnippet'}, t"\\dots", {condition = is_math}),
-    s({trig = "...", snippetType='autosnippet'}, t"\\dots", {condition = is_math}),
     s({trig = "->", snippetType='autosnippet'}, t"\\rightarrow", {condition = is_math}),
     s({trig = "<-", snippetType='autosnippet'}, t"\\leftarrow", {condition = is_math}),
+    s({trig = "<->", snippetType='autosnippet'}, t"\\longleftrightarrow", {condition = is_math}),
+    s({trig = "=>", snippetType='autosnippet'}, t"\\implies", {condition = is_math}),
+    s({trig = "=>", snippetType='autosnippet'}, t"\\implies", {condition = is_math}),
     s({trig = "|", snippetType='autosnippet'}, t"\\mid", {condition = is_math}),
     s({trig = "!|", snippetType='autosnippet'}, t"\\nmid", {condition = is_math}),
-    s({trig = "^"}, {t"^{", i(1), t"}", i(0)}, {condition = is_math}),
-    s({trig = "_"}, {t"^{", i(1), t"}", i(0)}, {condition = is_math}),
-    s({trig = "*", snippetType='autosnippet'}, c(1,{
-      t"*",
-      t"\\times",
-      t"\\cdot"}), {condition = is_math}),
-
-    s({trig = "\\R", snippetType='autosnippet'}, t"\\mathbb{R}", {condition = is_math}),
-    s({trig = "\\C", snippetType='autosnippet'}, t"\\mathbb{C}", {condition = is_math}),
-    s({trig = "\\F", snippetType='autosnippet'}, t"\\mathbb{F}", {condition = is_math}),
-    s({trig = "\\N", snippetType='autosnippet'}, t"\\mathbb{N}", {condition = is_math}),
-    s({trig = "\\P", snippetType='autosnippet'}, t"\\mathbb{P}", {condition = is_math}),
+    s({trig = "^", snippetType='autosnippet'}, {t"^{", i(1), t"}", i(0)}, {condition = is_math}),
+    s({trig = "_", snippetType='autosnippet'}, {t"_{", i(1), t"}", i(0)}, {condition = is_math}),
 
     postfix(".bar", {
             l("\\overline{" .. l.POSTFIX_MATCH .. "}", {condition = is_math}),
@@ -316,20 +323,27 @@ ls.add_snippets(nil, {
             l("\\vec{" .. l.POSTFIX_MATCH .. "}", {condition = is_math}),
     }),
 
+    postfix({trig = ".$", snippetType = 'autosnippet'}, {
+            l("\\(" .. l.POSTFIX_MATCH .. "\\)"),
+    }),
+    postfix(".!", {
+            l("\\[" .. l.POSTFIX_MATCH .. "\\]"),
+    }),
+
     --------------------------------------------------------------------------
     -- Functions
-    s({trig = "sum", snippetType = 'autosnippet'}, fmta([[\sum_{<>=<>}^{<>} \${<>}]], {
+    s({trig = "sum", snippetType = 'autosnippet'}, fmta([[\sum_{<>=<>}^{<>} <>]], {
       i(1,"n"), i(2,"0"), i(3,"\\infty"), i(4,"a_n")}
       ), {condition = is_math}),
 
     s({trig = "prod", snippetType = 'autosnippet'}, fmta([[
-    \prod_{<>=<>}^{<>} ${<>}
+    \prod_{<>=<>}^{<>} <>
     ]], {
       i(1,"n"), i(2,"0"), i(3,"\\infty"), i(4,"a_n")}
       ), {condition = is_math}),
     s({trig = "lim", snippetType = 'autosnippet'}, fmta([[
     \lim_{<> \to <>}
-    ]], {i(1, "x"), i(2,"0")})),
+    ]], {i(1, "x"), i(2,"0")}), {condition=is_math}),
     s("int", fmta([[
     \int_{<>}^<> {<> \,<>}
     ]], {i(1, "0"), i(2, "x"), i(3, "f(x)"), i(4, "dx")}), {condition=is_math}),
