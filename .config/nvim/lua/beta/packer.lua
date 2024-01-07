@@ -51,14 +51,17 @@ return require('packer').startup(function(use)
 	  'nvim-treesitter/nvim-treesitter',
 	  run = ':TSUpdate'
   }
-
+  use({
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      after = "nvim-treesitter",
+      requires = "nvim-treesitter/nvim-treesitter",
+  })
   use 'nvim-treesitter/nvim-treesitter-context'
 
 -------------------------------------------------------------------------------
 -- Navigation
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
-	  -- or                            , branch = '0.1.x',
+	  'nvim-telescope/telescope.nvim', branch = '0.1.x',
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
 
@@ -81,7 +84,18 @@ return require('packer').startup(function(use)
 -------------------------------------------------------------------------------
 -- Notes
   use 'lervag/vimtex'
-  use 'vimwiki/vimwiki'
+  use {
+  'vimwiki/vimwiki',
+  config = function()
+    vim.g.vimwiki_list = {
+      {
+        path = '~/Documents/My-Notes/Zettelkasten/ZettelKasten',
+        syntax = 'markdown',
+        ext  = '.md',
+      }
+    }
+  end
+  }
 
 -------------------------------------------------------------------------------
 -- Aesthetic
@@ -89,23 +103,21 @@ return require('packer').startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
---   use({
---     'rose-pine/neovim',
---     as = 'rose-pine',
---     config = function()
---         require("rose-pine").setup()
---         vim.cmd('colorscheme rose-pine')
---     end
--- })
-  use({ 
-    'catppuccin/nvim',
-    as = "catppuccin",
+
+  -- use({ "catppuccin/nvim",
+  --   as = "catppuccin",
+  --   config = function()
+  --     vim.cmd('colorscheme catppuccin')
+  --   end
+  -- })
+  use({
+    'rose-pine/neovim',
+    as = 'rose-pine',
     config = function()
-      vim.cmd('colorscheme catppuccin')
+      vim.cmd('colorscheme rose-pine')
     end
   })
-  
-  use "folke/zen-mode.nvim"
+
   use 'norcalli/nvim-colorizer.lua'
 
 end)

@@ -4,7 +4,10 @@ local lspconfig = require('lspconfig')
 
 -- Language Servers
 lspconfig.pyright.setup {}
-lspconfig.clangd.setup{}
+require'lspconfig'.clangd.setup{
+  cmd = {"/home/kyle/.local/bin/esp-clang/bin/clangd"},
+  -- root_dir = lspconfig.util.root_pattern('build/compile_commands.json', '.git'),
+}
 lspconfig.emmet_ls.setup{}
 lspconfig.gopls.setup {
   cmd = {"gopls", "serve"},
@@ -18,7 +21,7 @@ lspconfig.gopls.setup {
     },
   },
 }
--- lspconfig.jdtls.setup{}
+
 lspconfig['hls'].setup{
   filetypes = { 'haskell', 'lhaskell', 'cabal' },
 }
@@ -26,6 +29,8 @@ require'lspconfig'.tsserver.setup{}
 
 -- luasnip setup
 local luasnip = require('luasnip')
+
+require'lspconfig'.texlab.setup{}
 
 -- nvim-cmp setup
 local cmp = require('cmp')
@@ -55,8 +60,6 @@ cmp.setup {
     ['<Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -64,8 +67,6 @@ cmp.setup {
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
       else
         fallback()
       end
@@ -147,6 +148,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
@@ -156,7 +158,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
     vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
     vim.keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)

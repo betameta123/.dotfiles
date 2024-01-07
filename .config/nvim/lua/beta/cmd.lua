@@ -37,3 +37,16 @@ vim.api.nvim_create_autocmd({"BufRead"}, {
   pattern = {"*.tex, *.md, *.txt"},
   callback = function() vim.opt_local.spell = true end,
 })
+
+vim.api.nvim_create_autocmd({"BufLeave", "VimLeavePre"}, {
+  pattern = {"*.tex"},
+  -- command = ":silent !latexmk -cd % -c"
+  callback = function()
+    os.execute("latexmk -cd "..vim.api.nvim_buf_get_name(0).." -c &>/dev/null")
+  end 
+})
+
+-- autocmd BufWritePre * :%s/\s\+$//e
+vim.api.nvim_create_autocmd({"BufWritePre"}, {
+  command = "%s/\\s\\+$//e"
+})

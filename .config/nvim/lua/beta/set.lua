@@ -27,7 +27,5 @@ vim.opt.splitbelow = true
 vim.opt.updatetime = 50
 
 vim.cmd("setlocal spell spelllang=en_us")
-vim.cmd("set nocompatible")
-vim.cmd("filetype plugin on")
 vim.opt.colorcolumn = "80"
 vim.g.mapleader = " "

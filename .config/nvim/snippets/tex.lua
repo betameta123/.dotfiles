@@ -36,8 +36,8 @@ local sympy = function(_, snip)
   return formula
 end
 
-local function is_math()
-  return vim.fn["vimtex#syntax#in_mathzone"]() == 1
+function is_math()
+  return vim.api.nvim_eval('vimtex#syntax#in_mathzone()') == 1
 end
 
 local rec_ls
@@ -46,7 +46,7 @@ rec_ls = function()
 		c(1, {
 			-- important!! Having the sn(...) as the first choice will cause infinite recursion.
 			t({""}),
-			-- The same dynamicNode as in the snippet (also note: self reference).
+			-- The same dynamic Node as in the snippet (also note: self reference).
 			sn(nil, {t({"", "\t\\item "}), i(1), d(2, rec_ls, {})}),
 		}),
 	});
@@ -299,7 +299,7 @@ ls.add_snippets(nil, {
     ---------------------------------------------------------------------------
     -- Symbols
     s({trig = "//", snippetType='autosnippet'}, {t"\\frac{", i(1), t"}{", i(2), t"}"}, {condition = is_math}),
-    s({trig = "!=", snippetType='autosnippet'}, t"\\ne", {condition = is_math}),
+    s({trig = "!=", snippetType='autosnippet'}, t"\\ne", {condition = is_math }),
     s({trig = "<=", snippetType='autosnippet'}, t"\\leq", {condition = is_math}),
     s({trig = ">=", snippetType='autosnippet'}, t"\\geq", {condition = is_math}),
     s({trig = "...", snippetType='autosnippet'}, t"\\dots", {condition = is_math}),
@@ -308,7 +308,6 @@ ls.add_snippets(nil, {
     s({trig = "<->", snippetType='autosnippet'}, t"\\longleftrightarrow", {condition = is_math}),
     s({trig = "=>", snippetType='autosnippet'}, t"\\implies", {condition = is_math}),
     s({trig = "=>", snippetType='autosnippet'}, t"\\implies", {condition = is_math}),
-    s({trig = "|", snippetType='autosnippet'}, t"\\mid", {condition = is_math}),
     s({trig = "!|", snippetType='autosnippet'}, t"\\nmid", {condition = is_math}),
     s({trig = "^", snippetType='autosnippet'}, {t"^{", i(1), t"}", i(0)}, {condition = is_math}),
     s({trig = "_", snippetType='autosnippet'}, {t"_{", i(1), t"}", i(0)}, {condition = is_math}),
@@ -322,8 +321,13 @@ ls.add_snippets(nil, {
     postfix(".vec", {
             l("\\vec{" .. l.POSTFIX_MATCH .. "}", {condition = is_math}),
     }),
+    postfix("/", {
+    d(1, function (_, parent)
+      return sn(nil, {t("\\frac{" .. parent.env.POSTFIX_MATCH .. "}{"), i(1), t("}")}, {condition = is_math})
+    end)
+    }),
 
-    postfix({trig = ".$", snippetType = 'autosnippet'}, {
+    postfix({trig = ".$"}, {
             l("\\(" .. l.POSTFIX_MATCH .. "\\)"),
     }),
     postfix(".!", {
@@ -341,7 +345,7 @@ ls.add_snippets(nil, {
     ]], {
       i(1,"n"), i(2,"0"), i(3,"\\infty"), i(4,"a_n")}
       ), {condition = is_math}),
-    s({trig = "lim", snippetType = 'autosnippet'}, fmta([[
+    s({trig = "lim"}, fmta([[
     \lim_{<> \to <>}
     ]], {i(1, "x"), i(2,"0")}), {condition=is_math}),
     s("int", fmta([[

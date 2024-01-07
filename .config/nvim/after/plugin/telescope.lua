@@ -1,6 +1,8 @@
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>nf', builtin.find_files, {})
+vim.keymap.set('n', '<leader>nb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>n/', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>nr', builtin.lsp_references, {})
 
 require("telescope").load_extension "file_browser"
 vim.api.nvim_set_keymap('n', '<space>nn', ':Telescope file_browser<CR>', { noremap = true })
