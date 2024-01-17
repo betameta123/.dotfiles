@@ -43,7 +43,12 @@ vim.api.nvim_create_autocmd({"BufLeave", "VimLeavePre"}, {
   -- command = ":silent !latexmk -cd % -c"
   callback = function()
     os.execute("latexmk -cd "..vim.api.nvim_buf_get_name(0).." -c &>/dev/null")
-  end 
+  end
+})
+
+vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+  pattern = {"*.norg"},
+  command = "set conceallevel=3"
 })
 
 -- autocmd BufWritePre * :%s/\s\+$//e

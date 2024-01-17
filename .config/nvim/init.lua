@@ -1,3 +1,7 @@
-require("beta")
+require("beta.set")
+require("beta.cmd")
+require("beta.remap")
 
-require("luasnip.snippets")
+require("beta.lazy")
+require("lazy").setup("plugins")
+

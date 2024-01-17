@@ -5,7 +5,7 @@ local lspconfig = require('lspconfig')
 -- Language Servers
 lspconfig.pyright.setup {}
 require'lspconfig'.clangd.setup{
-  cmd = {"/home/kyle/.local/bin/esp-clang/bin/clangd"},
+  -- cmd = {"/home/kyle/.local/bin/esp-clang/bin/clangd"},
   -- root_dir = lspconfig.util.root_pattern('build/compile_commands.json', '.git'),
 }
 lspconfig.emmet_ls.setup{}
@@ -79,6 +79,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'nvim_lsp_signature_help' },
+    { name = 'neorg'},
   },
   -- Do not auto select first option
   preselect = cmp.PreselectMode.None,
