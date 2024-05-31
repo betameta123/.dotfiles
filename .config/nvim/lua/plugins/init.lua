@@ -1,38 +1,33 @@
 return {
-
-	-- LSP
-	{
+	  -- LSP
+  {
     'neovim/nvim-lspconfig',
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {'hrsh7th/nvim-cmp'},
 
     config = function()
       require "plugins.configs.lsp"
     end
-	},
+  },
 
-	{
-		'rose-pine/neovim',
-		name = 'rose-pine',
+  {
+    "folke/tokyonight.nvim",
+    name = 'tokyonight',
+    lazy = false,
     priority = 1000,
-		config = function()
-			vim.cmd('colorscheme rose-pine')
-		end
-	},
+    config = function()
+      vim.cmd('colorscheme tokyonight-night')
+    end,
+    opts = {},
+  },
 
   -- Autocompletion
   {
-		'hrsh7th/nvim-cmp',
+    'hrsh7th/nvim-cmp',
+    lazy = true,
     event = 'InsertEnter',
     dependencies = {
-      {
-        -- snippet plugin
-        "L3MON4D3/LuaSnip",
-        dependencies = "rafamadriz/friendly-snippets",
-        config = function()
-          require("plugins.configs.luasnip")
-        end,
-      },
-
       {
         "windwp/nvim-autopairs",
         opts = {
@@ -47,117 +42,147 @@ return {
           require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
       },
+
+      {
+        'L3MON4D3/LuaSnip',
+        config = function()
+          require 'plugins.configs.luasnip'
+        end
+      },
       {
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-nvim-lsp-signature-help',
+      'saadparwaiz1/cmp_luasnip',
       }
     },
   },
 
+  -------------------------------------------------------------------------------
+  -- Type Faster
+
   {
-		'mfussenegger/nvim-jdtls',
-    ft = "java"
+    'tpope/vim-surround',
   },
 
-
--------------------------------------------------------------------------------
--- Type Faster
-
   {
-		'tpope/vim-surround',
-  },
-
-
-  {
-		'tpope/vim-repeat',
+    'tpope/vim-repeat',
   },
 
   {
     'windwp/nvim-autopairs',
+    lazy = true,
+    event = "InsertEnter",
     config = function()
       require('nvim-autopairs').setup({})
     end,
   },
 
   {
-		'mg979/vim-visual-multi',
+    'mg979/vim-visual-multi',
   },
 
   {
-      'numToStr/Comment.nvim',
-      config = function()
-          require('Comment').setup()
-      end,
+    'numToStr/Comment.nvim',
+    lazy = true,
+    event = { "CursorHold", "CursorHoldI" },
   },
 
--------------------------------------------------------------------------------
--- Treesitter
+  -------------------------------------------------------------------------------
+  -- Treesitter
   {
-	  'nvim-treesitter/nvim-treesitter',
-	  build = ':TSUpdate',
+    'nvim-treesitter/nvim-treesitter',
+    lazy = true,
+    event = "BufReadPre",
+    build = ':TSUpdate',
     config = function()
       require('plugins.configs.treesitter')
     end
   },
 
   {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      dependencies = { 'nvim-treesitter/nvim-treesitter' },
-      config = function()
-        require('plugins.configs.tree-textobjects')
-      end
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    lazy = true,
+    event = "BufReadPre",
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('plugins.configs.tree-textobjects')
+    end
   },
 
   {
-		'nvim-treesitter/nvim-treesitter-context',
+    'nvim-treesitter/nvim-treesitter-context',
+    lazy = true,
+    event = "BufReadPre",
     config = function()
       require('plugins.configs.tree-context')
     end
   },
 
-
--------------------------------------------------------------------------------
--- Navigation
+  -------------------------------------------------------------------------------
+  -- Navigation
+  {
+    'nvim-telescope/telescope.nvim',
+    lazy = true,
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+    keys = {
+      {"<leader>nf", function() require('telescope.builtin').find_files() end, },
+      {"<leader>nb", function() require('telescope.builtin').buffers() end, },
+      {"<leader>n/", function() require('telescope.builtin').live_grep() end, },
+      {"<leader>nr", function() require('telescope.builtin').lsp_references() end, },
+    },
+    config = function ()
+      require('plugins.configs.telescope')
+    end,
+  },
 
   {
     'nvim-telescope/telescope-file-browser.nvim',
+    lazy = true,
     dependencies = {
-      {
-        'nvim-telescope/telescope.nvim',
-        dependencies = {
-        'nvim-lua/plenary.nvim'
-        },
-        config = function ()
-          require('plugins.configs.telescope')
-        end
-      }
-    }
+      {'nvim-telescope/telescope.nvim'}
+    },
+    keys = {
+      { "<leader>nn",  ":Telescope file_browser<CR>"},
+      { "<leader>nc",  ":Telescope file_browser path=$XDG_CONFIG_HOME/nvim<CR>"},
+      { "<leader>nN",  ":Telescope file_browser path=~/Documents/My-Notes/notes<CR>"},
+    },
   },
 
--- git
+  -- git
   {
     'tpope/vim-fugitive',
-    lazy = true
+    lazy = true,
+    cmd = { "Git", "G" },
   },
 
-  {
-    'lewis6991/gitsigns.nvim',
-  },
-
--------------------------------------------------------------------------------
--- Notes
+  -------------------------------------------------------------------------------
+  -- Notes
   {
     'lervag/vimtex',
-    ft = 'vim'
+    lazy = true,
+    ft = 'tex',
+    config = function ()
+      require('plugins.configs.vimtex')
+    end
   },
+
+   {
+     "vhyrro/luarocks.nvim",
+     lazy = true,
+     config = true,
+   },
 
   {
     "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    -- tag = "*",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = true,
+    ft = "norg",
+    cmd = {"Neorg"},
+     -- tag = "*",
+    dependencies = { "nvim-lua/plenary.nvim", "luarocks.nvim" },
     config = function()
       require("neorg").setup {
         load = {
@@ -175,6 +200,7 @@ return {
               default_workspace = "notes",
             },
           },
+          ["core.summary"] = {},
           ["core.completion"] = {
             config = {
               engine = "nvim-cmp",
@@ -185,15 +211,21 @@ return {
     end,
   },
 
--------------------------------------------------------------------------------
--- Aesthetic
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { {'kyazdani42/nvim-web-devicons', lazy = true} }
+    'jbyuki/nabla.nvim',
+    lazy = true,
+    keys = {
+      {"<leader>p", function() vim.keymap.set("n", "<leader>p", ":lua require(\"nabla\").popup()<CR>\" Customize with popup({border = ...})  : `single` (default), `double`, `rounded`") end },
+    },
   },
 
+  -------------------------------------------------------------------------------
+  -- Aesthetic
   {
-    'norcalli/nvim-colorizer.lua'
-  }
+    'nvim-lualine/lualine.nvim',
+    lazy = true,
+    event = { "BufReadPost", "BufAdd", "BufNewFile" },
+    dependencies = { {'kyazdani42/nvim-web-devicons', lazy = true} }
+  },
 
 }

@@ -1,14 +1,32 @@
 -- Setup language servers.
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 local lspconfig = require('lspconfig')
+
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- Language Servers
 lspconfig.pyright.setup {}
-require'lspconfig'.clangd.setup{
+local on_attach = function(client, bufnr)
+  if client.name == 'ruff_lsp' then
+    -- Disable hover in favor of Pyright
+    client.server_capabilities.hoverProvider = false
+  end
+end
+
+lspconfig.ruff_lsp.setup {
+  on_attach = on_attach,
+}
+
+lspconfig.arduino_language_server.setup{}
+lspconfig.clangd.setup{
   -- cmd = {"/home/kyle/.local/bin/esp-clang/bin/clangd"},
   -- root_dir = lspconfig.util.root_pattern('build/compile_commands.json', '.git'),
 }
 lspconfig.emmet_ls.setup{}
+
+lspconfig.cssls.setup {
+  capabilities = capabilities,
+}
 lspconfig.gopls.setup {
   cmd = {"gopls", "serve"},
   filetypes = {"go", "gomod"},
@@ -158,7 +176,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ga', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<space>f', function()
       vim.lsp.buf.format { async = true }
     end, opts)
